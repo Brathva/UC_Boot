@@ -17,10 +17,10 @@ public class PersonService {
         this.personDao = personDao;
     }
 
-    public int addperson(Person person)
+    public int addperson(List<Person> person)
     {
-        UUID id = UUID.randomUUID();
-        return personDao.insertPerson(id, person);
+
+        return personDao.insertPerson(person);
     }
 
     public List<Person> getAllPeople()

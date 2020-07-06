@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface PersonDao {
 
-        int insertPerson(UUID id, Person person);
+        int insertPerson(List<Person> person);
 
         List<Person> selectAllpeople();
 

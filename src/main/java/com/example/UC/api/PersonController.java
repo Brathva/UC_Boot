@@ -21,7 +21,7 @@ public class PersonController {
         this.personService = personService;
     }
     @PostMapping
-    public void addPerson(@Valid @NotNull @RequestBody Person person)
+    public void addPerson(@Valid @NotNull @RequestBody List<Person> person)
     {
         personService.addperson(person);
     }

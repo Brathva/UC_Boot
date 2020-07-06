@@ -3,14 +3,19 @@ package com.example.UC.dao;
 import com.example.UC.model.Person;
 import org.springframework.stereotype.Repository;
 
-import java.util.*;
-@Repository("fakeDao")
-public class FakePersonDataAccessService implements PersonDao {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+@Repository("postgres")
+public class PersonDataAccessService implements PersonDao {
+
     private static List<Person> DB = new ArrayList<>();
 
     @Override
     public int insertPerson(List<Person> person) {
-        person.stream().forEach((person1) -> DB.add(new Person(UUID.randomUUID(), person1.getName())));
+        //DB.add(new Person(person.getName()));
         return 1;
     }
 
@@ -32,11 +37,11 @@ public class FakePersonDataAccessService implements PersonDao {
     }
 
     @Override
-    public int updatePersonById(UUID id, Person update) {
-        return selectPersonById(id).map(person -> {
-            int indexOfPersonToUpdate = DB.indexOf(person);
+    public int updatePersonById(UUID id, Person person) {
+        return selectPersonById(id).map(p -> {
+            int indexOfPersonToUpdate = DB.indexOf(p);
             if(indexOfPersonToUpdate >=0 ){
-                DB.set(indexOfPersonToUpdate, new Person(id, update.getName()));
+                DB.set(indexOfPersonToUpdate, new Person(id, p.getName()));
                 return 1;
             }
             return 0;
