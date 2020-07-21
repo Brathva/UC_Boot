@@ -1,0 +1,7 @@
+com\example\UC\dao\PersonDao.class
+com\example\UC\dao\PersonDataAccessService.class
+com\example\UC\dao\FakePersonDataAccessService.class
+com\example\UC\service\PersonService.class
+com\example\UC\model\Person.class
+com\example\UC\UcApplication.class
+com\example\UC\api\PersonController.class

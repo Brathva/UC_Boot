@@ -3,10 +3,7 @@ package com.example.UC.dao;
 import com.example.UC.model.Person;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Repository("postgres")
 public class PersonDataAccessService implements PersonDao {
@@ -22,13 +19,13 @@ public class PersonDataAccessService implements PersonDao {
     @Override
     public List<Person> selectAllpeople()
     {
-        return DB;
+        return Arrays.asList(new Person(UUID.randomUUID(), "From PostgreSQL"));
     }
 
     @Override
     public int deletePersonById(UUID id) {
         Optional<Person> personMayBe = selectPersonById(id);
-        if(personMayBe.isEmpty())
+        if(personMayBe.isPresent())
         {
             return 0;
         }
